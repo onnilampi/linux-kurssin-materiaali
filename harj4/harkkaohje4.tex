@@ -1,0 +1,238 @@
+\documentclass[12pt,portrait,a4]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+
+\pdfinfo{
+  /Title (harkkaohje4.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Risto Järvinen)
+  /Subject (Harkkaohje4)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedbottom
+
+\begin{multicols}{2}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+Nimi:\hrulefill
+
+Op.num:\hrulefill
+
+\end{multicols}
+
+\section{Screen}
+
+Screen mahdollistaa terminaalisessioiden pitämisen elossa
+vaikka terminaaliyhteys olisi poikki.
+
+\begin{enumerate}
+\item Luo uusi sessio nimelle ''hakku'': \emph{screen -S hakku}
+\item Käynnistä tekstieditori luodussa sessiossa ja luo tiedosto hakku.txt
+\item Katkaise yhteys sessioon: \emph{CTRL-a d}
+\item Luo toinen sessio nimelle ''kuokka'' ja käynnistä sen sisään aptitude: \emph{screen -S kuokka aptitude}
+\item Listaa mitä screen-sessioita järjestelmässä on: \emph{screen -ls}
+\item Katkaise yhteys ''kuokkaan'' ja liitä yhteys ''hakkuun''
+\item Luo ''hakkuun'' toinen ikkuna: \emph{CTRL-a c}
+\item Liitä ''kuokka'' ''hakun'' toiseen ikkunaan: \emph{screen -r kuokka}
+\item Sulje ''kuokasta'' aptitude.  Tällöin se screen sulkeutuu, koska sen
+viimeinen ikkuna poistui.
+\end{enumerate}
+
+HUOM: älä avaa screenejä itsensä sisällä.  Silmukat räjähtävät.
+
+\section{SSH}
+
+SSH on kryptografisesti suojattu terminaali-etäkäyttö-ohjelma.
+
+\begin{enumerate}
+\item Muodosta SSH-yhteys palvelimelle.  Esimerkki: \emph{ssh username@kosh.aalto.fi}
+\item Nyt voit suorittaa terminaalikomentoja palvelimella paikallisen koneen sijaan.
+\item SSH+Screen on äärimmäisen joustava työkalu yhdistämän
+terminaali-työskentely-sessiot koneelta toiselle siirtyessä.
+\end{enumerate}
+
+SSH-asiakasohjelmia on useimmille alustoille:
+\begin{itemize}
+\item putty windowsilla
+\item openssh linux/unix/osx:llä
+\item JuiceSSH androidilla
+\end{itemize}
+
+SSH on pääasiallinen työkalu verkkopalvelimien säätämiseen.
+
+\subsection{Tiedostojen siirtäminen}
+
+SSH:n kylkiäisapuohjelmat sisältää tiedostojen siirtämisen:
+\begin{itemize}
+\item puttyllä pscp/psftp, linuxilla scp/sftp.  GUI-softia filezilla, winscp.
+\item Siirrä tekstitiedosto linux-koneeltasi jollekin toiselle koneelle.
+\item Jos Linux-koneesi pyörii virtuaalikoneessa, siirrä tekstitiedosto
+isäntäkoneelle.  Miltä tiedoston sisältö näyttää kun sen avaa isäntäkoneella?
+(esim notepad windowsilla)
+\end{itemize}
+
+\subsection{Tunnelointi}
+
+SSH voi ''tunneloida'' graafisia sovelluksia.  Tämä vaatii X11-palvelimen
+koneeltasi.  Linuxissa X11 on mukana, MacOSX tarvii sen asentamisen
+lisäpakettina, Windows tarvitsee erillissoftan.
+
+\begin{enumerate}
+\item Muodosta ssh-yhteys käyttäen ''-X'' parametria.  Esim. \emph{ssh -X username@brute.aalto.fi}
+\item Käynnistä graafinen sovellus: \emph{xclock}
+\item Ohjelma suoritetaan tällöin koneella johon otit yhteyden, mutta sen
+graafinen käyttöliittymä piirtyy omalle koneellesi SSH-tunnelin toiseen päähän.
+\item Tämä toimii myös isommillekin sovelluksille: \emph{matlab}
+\item Siirtoyhteydestä aiheutuu jonkun verran yleisrasitetta toimintaan, että
+monimutkaisemmat/graafisemmat sovellukset eivät toimi erityisen hyvin.
+\end{enumerate}
+
+SSH voi tunneloida myös geneerisesti TCP-yhteyksiä.
+TCP-tunneleita on kahta tyyppiä: paikalliset ja etäpään tunnelit.
+
+\begin{itemize}
+\item Paikalliset tunnelit tarkoittaa että SSH kuuntelee paikallista TCP-porttia
+ja välittää yhteyden etäpään kautta nimettyyn kohteeseen.
+\item Etäpääntunnelit toimivat päinvastoin; SSH kuuntelee etäpäässä TCP-porttia
+ja välittää yhteyden paikallisen koneen kautta nimettyyn kohteeseen.
+\end{itemize}
+
+Yksi käytännöllinen sovellus SSH-tunneleihin on kiertää palomuurirajoituksia.
+Esimerkki tällaisesta olisi käyttää jostain Aalto-yliopiston verkon
+ulkopuolelta Aallon wwwproxy.hut.fi palvelua Koshin kautta.
+
+\begin{enumerate}
+\item Tällöin tunneli muodostettaisiin seuraavasti:
+\emph{ssh username@kosh.aalto.fi -L localhost:8080:wwwproxy.hut.fi:80}
+\item Aseta tämän jälkeen webbiselaimesi proxy-asetukseksi: \emph{localhost:8080}
+(firefox: preferences/advanced/network/settings)
+\item Vahvista toiminta vaikkapa \url{http://whatismyipaddress.com}
+\end{enumerate}
+
+\subsection{Julkisen avaimen autentikointi}
+
+SSH-yhteydet yksinkertaisimmillaan ovat salasanalla autentikoituja.
+Salasanan tietäminen vahvistaa että käyttäjä on kyseisen käyttäjätunnuksen
+omistaja.  Julkisen avaimen autentikointimenetelmässä muodostetaan ns.
+julkinen avain ja ns. yksityinen avain.  Yksityisen avaimen omistaminen
+vahvistaa käyttäjän identiteetin.
+
+\begin{enumerate}
+\item Suorita komento: \emph{ssh-keygen -f testi}
+\item Tämä luo ''testi''-nimisen yksityisen avaimen, ja sitä vastaavan julkisen
+avaimen ''testi.pub''.  Julkinen avain voidaan vapaasti kopioida palvelimelle
+(sen tietäminen ei auta mahdollisia hakkereita varastamaan tunnuksiasi).
+\item Tämän voi tehdä joko manuaalisesti kopioimalla ''testi.pub'' palvelimella
+kotihakemistoosi ''.ssh/authorized\_hosts'' tiedostoon.  Tai automaattisesti
+komennolla: \emph{ssh-copy-id -i testi username@palvelin}
+\item Nyt voit kirjautua ilman salasanaa: \emph{ssh -i testi username@palvelin}
+\end{enumerate}
+
+Jos et käytä ''-f'' parametria niin julkinen avain luodaan profiiliisi
+oletusavaimeksi ja sitä käytetään automaattisesti (ilmankin ''-i''
+parametria).
+
+Julkisen avaimen menetelmiä käytetään usein myös mahdollistamaan
+automaattiset ylläpitotoimet ssh-yhteyksiä käyttäen; palvelinohjelmisto
+käyttää ssh-avainta ottaakseen yhteydet.  Ei tarvita ihmistä tekemään
+jokaikistä asiaa.
+
+\section{Verkkodiagnostiikat}
+
+Ethernet/WirelessLAN-verkoissa toimintamalli on että ''naapurit'', eli samassa
+segmentissä ja subnetissä olijat, ovat suoraan saavutettavissa.  Pääsy
+muuhun verkkoon tapahtuu ''gateway'' noodin läpi.  Gateway on reititin, joka
+viestittelee muiden reitittimien kanssa kunnes viesti saadaan perille.
+
+\subsection{Ping-komento}
+\begin{enumerate}
+\item Selvitä \emph{ip addr} komennolla oma osoitteesi.  Vastaako tämä pingiin?
+\item Selvitä \emph{ip route} komennolla gatewaysi.  Vastaako tämä pingiin?
+\item Selvitä ''www.aalto.fi'' palvelimen osoite nslookup -komennolla.
+\item Testaa vastaako ''www.aalto.fi'' ping komentoon.  Mikä on keskimääräinen
+vasteaika (rtt avg)?  Onko tuloksesi sama kuin muilla?
+\end{enumerate}
+
+Pää pyörällä IP-osoitteiden ja subnettien kanssa?  Numerojen pyörittämiseen
+on näppärä apuohjelma nimeltä \emph{ipcalc}.  Asenna tämä (\emph{apt-get
+install ipcalc}).  Poimi \emph{ip addr} komennon tulosteesta IPv4 osoitteesi
+(inet -sanan jälkeen ''x.x.x.x/x'') ja syötä tämä tyyliin \emph{ipcalc x.x.x.x/x}.
+
+\subsection{Reitinselvitys}
+\begin{enumerate}
+\item Millaisen näkymän antaa \emph{traceroute www.google.fi}?
+Entä \emph{traceroute www.aalto.fi}?
+\item Kokeile \emph{mtr} komentoa samoille kohteille.
+\end{enumerate}
+
+
+\subsection{Liikenteen dumppaaminen}
+
+Seuraavat vaativat ylimääräisiä oikeuksia, joten suorita komennot joko
+roottina tai sudo-komennon avulla.
+\begin{enumerate}
+\item Samalla kun suoritat yhdessä ikkunassa ping-komentoa, aja toisessa ikkunassa
+\emph{sudo tcpdump -i verkkolaite icmp} (missä verkkolaite on käyttämäsi laite)
+\item Suorita \emph{sudo tcpdump -i verkkolaite tcp port 80} ja lataa joku http:tä
+käyttävä webbisivu, esimerkiksi \url{http://www.aalto.fi/} (https käyttää eri porttia).
+\end{enumerate}
+
+Wireshark on graafinen työkalu, joka voi dumpata liikennetta ja tarkastella
+sen sisältöä.  Näiden työkalujen käytöstä lisää \emph{ELEC-C7240 Internet-tekniikat}.
+
+
+
+\end{document}

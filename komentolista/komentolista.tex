@@ -1,0 +1,292 @@
+\documentclass[10pt,portrait,a4]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+%\usepackage[landscape]{geometry}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+
+\pdfinfo{
+  /Title (komentolista.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Risto Järvinen)
+  /Subject (Komentolista)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+%\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{2}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{Linux-komentoavuste}} \\
+\tiny{Tekijät: Riba/Aalto ELEC/Comnet \& TLT-Klubi}\\
+\end{center}
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[man] näyttää ohjelmien ohjekirjoja
+\item[apropos] etsii hakusanaa ohjekirjoista
+\end{description}
+
+\section{Tiedostot ja hakemistot}
+
+\begin{description}[leftmargin=1.6cm,style=nextline]
+\item[ls] näyttää hakemiston sisällön
+\item[cd] siirtyy hakemistoon
+\item[pwd] näyttää tämänhetkisen hakemiston
+\item[mkdir] luo hakemiston
+\item[rmdir] poistaa hakemiston
+\item[cp] kopioi tiedoston
+\item[rm] poistaa tiedoston
+\item[mv] siirtää tiedoston
+\medskip
+\item[df] kertoo paljonko levyillä on vapaata tilaa
+\item[touch] päivittää tiedoston aikaleiman (tai luo tyhjän tiedoston)
+\item[file] kertoo tiedoston tyypin
+\item[ln] tekee kovan tai symbolisen linkin
+\medskip
+\item[dos2unix] Muuntaa dos-tyyliset rivinvaihdot unix-tyylisiksi
+\item[unix2dos] Muuntaa unix-tyyliset rivinvaihdot dos-tyylisiksi
+\end{description}
+
+\section{Prosessien hallinta}
+
+\begin{description}[leftmargin=1.9cm,style=nextline]
+\item[ps] listaa prosesseja
+\item[pstree] kauniimpi lista prosesseista
+\item[kill] lähettää signaalin prosessille (yleensä pyyntö sammua)
+\item[top] interaktiivinen prosessilista
+\medskip
+\item[uptime] kauanko järjestelmä on ollut päällä
+\item[free] paljonko järjestelmässä on muistia
+\medskip
+\item[logout/exit] kirjautuu shellistä ulos
+\item[reboot] käynnistää koneen uudelleen
+\item[halt] sammuttaa koneen
+\item[shutdown] sammuttaa/boottaa koneen
+\end{description}
+
+\section{Tiedon hakeminen}
+
+Tässä yhteydessä tieto on joko teksti- tai binääritiedostoja.
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[find] etsii tiedostoja
+\item[locate] etsii tiedostoja (käyttää ennaltatehtyä tietokantaa)
+\item[grep] etsii merkkijonoja syötteestä, esim tiedostoista
+\item[xargs] muuttaa syötteen komentoparametreiksi toiselle komennolle
+\medskip
+\item[sort] järjestää syötetyt merkkijonot
+\item[head] poimii tekstitiedostosta N ensimmäistä riviä
+\item[tail] poimii tekstitiedostosta N viimeistä riviä
+\medskip
+\item[cat] tulostaa annetun lähteen
+\item[less] lukee/selaa annettua lähdettä
+\item[zless] lukee/selaa pakattua lähdettä
+\item[dd] Siirtää tietoa annetusta lähteestä annettuun kohteeseen
+\medskip
+\item[echo] tulostaa annetun merkkijonon
+\item[tee] jakaa tulosteen kahteen
+\item[date] tulostaa aikaleiman
+\item[wc] laskee montako merkkiä/sanaa/riviä syötteessä on
+\end{description}
+
+\section{Syötteen ja tulosteen ohjaaminen}
+
+Jokainen komento voi ottaa yhden syötteen (stdin) ja antaa kaksi tulostetta;
+tuloste (stdout) ja virhetuloste (stderr).  Oletuksena syöte on näppäimistö,
+ja tulosteet tulostetaan konsolille.
+
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[komento \textgreater tiedosto] ohjaa komennon tulosteen tiedostoon
+\item[komento1 \textbar komento2] putkittaa komennon1 tulosteen komennon2 syötteeksi
+\item[komento \textless tiedosto] ohjaa tiedoston komennon syötteeksi
+\medskip
+\item[komento 2\textgreater tiedosto] ohjaa komennon virhetulosteen tiedostoon.
+\item[komento \textless tiedosto0 \textgreater tiedosto1 2\textgreater tiedosto2]
+\medskip
+\item[komento \textgreater /dev/null] ohjaa tulosteen ''roskiin''
+\item[komento 2\textgreater\&1] Yhdistää virhetulosteen ja normitulosteen
+\item[komento 2\textgreater\&1 \textgreater tiedosto] ohjaa virhetulosteen konsolille ja normitulosteen tiedostoon
+\item[komento \textgreater tiedosto 2\textgreater\&1] ohjaa normitulosteen tiedostoon ja virhetulosteen sinne mukaan
+
+\end{description}
+
+\section{Käyttäjät ja oikeudet}
+
+\begin{verbatim}
+tyyppi
+|omistajan oikeudet
+||||ryhmän oikeudet
+|||||||muiden oikeudet
+-rwxrwxrwx
+r = luku, w = kirjoitus, x = suorittaminen
+\end{verbatim}
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[chown] vaihtaa tiedoston omistajaa
+\item[chgrp] vaihtaa tiedoston ryhmää
+\item[chmod] muokkaa oikeuksia
+\item[adduser] lisää käyttäjä järjestelmään
+\item[deluser] poista käyttäjä järjestelmästä
+\item[passwd] salasanan vaihtaminen
+\medskip
+\item[who/w] tulostaa keitä on kirjautuneina
+\end{description}
+
+
+\section{Tekstieditorit}
+
+Pikainen ohjeistus vimin käytöstä:
+\begin{itemize}
+\item Tiedoston avaaminen: vim \textless polku tiedostoon\textgreater
+\item Peruskäytössä vimissä on kaksi moodia, komentomoodi ja muokkausmoodi.
+ Käynnistyessään vim on komentomoodissa, pääset muokkausmoodiin painamalla
+i"-näppäintä (i=insert)
+\item Palaaminen muokkaustilasta takaisin komentotilaan ESC-näppäimellä.
+\item Tekstin hakeminen /
+\item Kirjoita muutokset tiedostoon komennolla :w
+\item Sulje editori komennolla :q
+\item Kuten varmaan huomaat, komennot alkavat aina kaksoispisteellä.
+\end{itemize}
+
+Pikainen ohjeistus nanon käytöstä:
+\begin{itemize}
+\item Tiedoston avaaminen: nano \textless polku tiedostoon\textgreater
+\item Ruudun alalaidassa on avusteet yleisimpiin komentoihin.
+\item Tekstin hakeminen: CTRL-w
+\item Kirjoita muutokset tiedostoon komennolla CTRL-o
+\item Sulje editori komennolla CTRL-c
+\end{itemize}
+
+\section{Verkkoasetukset}
+
+Tietokoneessa on verkkolaitteita, joilla on osoitteita.  Osoitteet
+reititetään reititystaulun mukaan.
+
+\begin{description}[leftmargin=1.8cm,style=nextline]
+\item[ip link] Verkkolaitteet
+\item[ip addr] Verkko-osoitteet
+\item[ip neigh] Naapureiden tiedot
+\item[ip route] Reititystiedot
+\item[iwconfig] Langattoman verkon asetukset
+\medskip
+\item[ipcalc] laskee verkkopeitteitä ja osoitteita
+\item[wget] Hakee tiedoston URL-osoitteesta
+\medskip
+\item[ping] testaa vastaako tietty noodi (nimellä tai IP-osoitteella)
+\item[traceroute/mtr] tutkii reitin kohdenoodille
+\item[tcpdump] kerää liikennettä verkkolaitteella liikkuu
+\item[wireshark] graafinen tcpdump + protokolla-analysaattori
+\item[nslookup/dig] tekee nimipalvelupyynnön
+\end{description}
+
+\section{Paketinhallinta}
+
+\begin{description}[leftmargin=1.8cm,style=nextline]
+\item[apt-get] Pakettienkäsittely-työkalu
+\item[apt-cache] Tekee hakuja pakettitietokantoihin
+
+\item[aptitude] Tekstipohjainen käyttöliittymä
+\item[synaptics] Graafinen käyttöliittymä
+\end{description}
+
+
+\section{Pakkaustyökalut}
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[tar] koostaa/purkaa tiedostot ja niiden oikeudet yhteen tiedostoon
+\item[gzip] pakkaa/purkaa tiedoston
+\item[zip] koostaa ja pakkaa tiedostot zip-tiedostoon
+\item[unzip] purkaa zip-tiedoston
+\end{description}
+
+\section{Screen pikaopas}
+
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[ctrl-a c] luo uuden ikkunan
+\item[ctrl-a n] siirtyy seuraavaan ikkunaan
+\item[ctrl-a p] siirtyy edelliseen ikkunaan
+\item[ctrl-a NUMERO] siirtyy ikkunaan NUMERO
+\item[ctrl-a d] irroittautuu sessiosta
+\item[screen -r] liittyy olemassaolevaan sessioon
+\item[screen -rD] liittyy olemassaolevaan sessioon, katkaisten muut yhteydet
+\item[screen -rx] liittyy olemassaolevaan sessioon, muiden rinnalle
+\end{description}
+
+ref \url{http://aperiodic.net/screen/quick_reference}
+
+\section{SSH pikaopas}
+
+\section{Git pikaopas}
+
+
+
+% You can even have references
+%\rule{0.3\linewidth}{0.25pt}
+%\scriptsize
+%\bibliographystyle{abstract}
+%\bibliography{refFile}
+\end{multicols}
+\end{document}

@@ -1,0 +1,218 @@
+\documentclass[12pt,portrait,a4]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+
+\pdfinfo{
+  /Title (harkkaohje.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Risto Järvinen)
+  /Subject (Harkkaohje)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedbottom
+
+\begin{multicols}{2}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+Nimi:\hrulefill
+
+Op.num:\hrulefill
+
+\end{multicols}
+
+\section{Hakemistot}
+
+\begin{enumerate}
+\item Syötä komento ''\textbf{cd foobar}'', mitä tapahtui? \hrulefill
+
+\item Syötä komento ''\textbf{cd ..}'' (huomaa välilyönti ennen pisteitä),
+käytä ''\textbf{pwd}'' komentoa.  Mitä tapahtui? \\ . \hrulefill
+
+\item Listaa hakemiston sisältö ''\textbf{ls}'' komennolla.  Mitä näet? 
+\hrulefill
+
+\item Syötä komento ''\textbf{cd}''.  Mitä tapahtui?  Käytä ''\textbf{pwd}''
+komentoa.  \hrulefill
+
+\item Syötä komento ''\textbf{cd ..}'' kahdesti.  Mikä on tämän hakemiston
+sisältö ja rooli?  \\ .  \hrulefill
+
+\item Syötä komento ''\textbf{cd root}'', mitä tapahtui?  \hrulefill
+
+\item Syötä komento ''\textbf{ls -l}''.  Mihin hakemistoihin sinulla on pääsy?
+ \hrulefill\\ . \hrulefill
+
+\end{enumerate}
+
+\section{Tiedostot}
+
+\begin{enumerate}
+
+\item Siirry hakemistoon ''\textbf{/}'' ja sitten hakemistoon ''\textbf{etc}''.  Syötä komento
+''\textbf{ls}''.  Jos tuloste on pidempi kuin näyttösi, voit yrittää tehdä
+ikkunastasi suurempaa tai käyttää shift-pageup ja shift-pagedown nappeja.
+
+\item Syötä komento ''\textbf{file services}''.  Mikä on tämän tiedoston
+tyyppi?  \hrulefill
+
+\item Käytä komentoa ''\textbf{cat services}'' ja lue tiedosto.  Kokeile
+komentoa ''\textbf{less services}''.  Mikä palvelu on portissa TCP/88? 
+\hrulefill
+
+\item Siirry takaisin kotihakemistoosi komennolla ''\textbf{cd}''
+
+\item Syötä komento ''\textbf{file .}'', mikä on tämä tiedosto?  Voitko lukea sen sisältöä
+''\textbf{cat .}'' komennolla? \\ . \hrulefill
+
+\item Katso komennon ''\textbf{cp}'' ohjeet (''\textbf{man cp}'' ja/tai
+''\textbf{cp -{}-help}'').  Kopioi tiedosto ''\textbf{/etc/services}''
+kotihakemistoosi.
+
+\item Katso ''\textbf{cat}'' komennon ohjeet.  Tulosta ''\textbf{services}'' tiedoston sisältö
+lisäten siihen rivinumerot.  Millä parametreilla teit tämän? \hrulefill
+
+\item Suorita ''\textbf{grep -v '\#' services}''.  Katso grep-komennon ohjekirjasta mitä
+tämä tekee.  Lisää tähän tulosteeseen rivinumerot riveille jotka eivät ole
+tyhjiä.  Syötä käyttämäsi komennot tähän: \\ . \hrulefill \\ . \hrulefill
+
+\end{enumerate}
+
+\section{Mistä löytyy lisää tietoa?}
+
+\begin{enumerate}
+\item Lue ''\textbf{man intro}''
+
+\item Lue ''\textbf{man ls}'' - kaikilla komennoilla on ohjekirja
+
+\item Syötä ''\textbf{apropos pwd}'' - suorittaa hakuja ohjekirjoihin
+
+\item Lue ''\textbf{ls -{}-help}''
+
+\item Syötä ''\textbf{help cd}'' - help antaa ohjeita shellin sisäisitä
+komennoista.
+\end{enumerate}
+
+\section{Katsellaan ympäriinsä}
+
+\begin{enumerate}
+\item Siirry hakemistoon ''\textbf{/proc}''.  Tässä hakemistossa on käyttöjärjestelmän
+ajonaikaista tilaa kuvaavia tiedostoja.
+	\begin{itemize}
+	\item Montako prosessoriydintä koneessasi on? \hrulefill
+	\item Paljonko muistia koneessasi on? \hrulefill
+	\item Paljonko swap-tilaa koneessasi on? \hrulefill
+	\item Kauanko koneesi on ollut päällä? \hrulefill
+	\end{itemize}
+
+\item Siirry kansioon ''\textbf{/etc}''.  Tässä hakemistossa on käyttöjärjestelmän
+asetustiedostoja.
+	\begin{itemize}
+	\item Montako käyttäjätunnusta koneessasi on?  Älä laske käsin, anna
+koneen laskea. \hrulefill
+	\item Montako käyttäjäryhmää vastaavasti? \hrulefill
+	\item Missä tiedostossa koneen nimi säilytetään? \hrulefill
+	\end{itemize}
+
+\item Siirry hakemistoon ''\textbf{/usr/share/doc}''.  Tässä hakemistossa on
+käyttöjärjestelmään asennettujen ohjelmien ohjekirjoja.  (Tämä on debianismi.)
+	\begin{itemize}
+	\item Nimeä 3 ohjelmaa jotka tulee paketin ''\textbf{coreutils}'' mukana (vihje: README.gz)
+\\ . \hrulefill
+	\item Mikä versio ''\textbf{bash}'' ohjelmasta koneessasi on?
+\hrulefill
+	\end{itemize}
+\end{enumerate}
+
+\section{Hakemistojen ja tiedostojen kanssa leikkimistä}
+
+\begin{enumerate}
+\item Luo uusi hakemisto kotihakemistoosi.
+	\begin{itemize}
+	\item Voitko siirtää tämän hakemiston samaan hakemistoon missä kotihakemistosi on?
+\hrulefill
+	\item Kopioi kaikki XPM-tiedostot ''\textbf{/usr/share/pixmaps}'' hakemistosta uuteen
+hakemistoosi.  Mitä ''XPM'' tarkoittaa? \hrulefill
+	\item Listaa XPM-tiedostot käänteisessä aakkosjärjestyksessä. Mikä
+on kolmanneksi viimeisen tiedoston nimi? \hrulefill
+
+	\end{itemize}
+
+\item Siirry takaisin kotihakemistoosi.  Luo uusi hakemisto ja kopioi kaikki
+tiedostot ''\textbf{/etc}'' hakemistosta luomaasi hakemistoon.  Kopioi myös
+alihakemistot!  (Vihje: ''recursive'')
+	\begin{itemize}
+	\item Siirry uuteen hakemistoosi.  Tee uusi alihakemisto ja laita
+sinne tiedostot, jotka alkavat isolla alkukirjaimella.  Tee toinen
+alihakemisto ja laita sinne tiedostot, jotka alkavat pienellä kirjaimella. 
+Mikä on pienin lukumäärä komentoja joilla tämän pystyt tekemään?  \hrulefill
+	\item Poista ylijääneet tiedostot.
+	\item Siirry kotihakemistoosi.  Poista kopioimasi tiedostot
+sisältävä alihakemisto ja kaikki sen sisältämät tiedostot yhdellä
+komennolla.  Tämä komento on: \hrulefill
+	\end{itemize}
+
+\item Tee kotihakemistoosi symbolinen linkki hakemistoon ''\textbf{/tmp}''.  Tarkasta
+että se toimii.
+	\begin{itemize}
+	\item Tee kotihakemistoosi toinen linkki joka osoittaa edelliseen kotihakemistoosi
+tekemään linkkiin.  Toimiiko se? \hrulefill
+	\item Poista ensimmäinen linkki ja tarkasta kotihakemistosi sisältö.
+Mitä tapahtui toiselle linkille? \\ . \hrulefill
+	\end{itemize}
+\end{enumerate}
+
+
+\end{document}

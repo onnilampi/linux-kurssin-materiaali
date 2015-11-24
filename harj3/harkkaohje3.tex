@@ -1,0 +1,182 @@
+\documentclass[12pt,portrait,a4]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+
+\pdfinfo{
+  /Title (harkkaohje3.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Risto Järvinen)
+  /Subject (Harkkaohje3)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedbottom
+
+\begin{multicols}{2}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+Nimi:\hrulefill
+
+Op.num:\hrulefill
+
+\end{multicols}
+
+\section{Tekstieditori}
+
+Kertausta viime kerrasta:
+\begin{enumerate}
+\item Luo kotihakemistoosi yksi tyhjä tiedosto, sekä uusi hakemisto.
+\item Siirrä luomasi tiedosto luomaasi hakemistoon.
+\item Avaa tyhjä tiedosto tekstieditorilla (kokeile nano ja vim, ohjeet
+komentolistassa)
+\item Tulosta muokkaamasi tiedosto terminaaliin.
+\item Kokeile muuntaa tiedoston rivinvaihdot dos/unix-muotojen välillä.
+Näetkö eroa tekstieditorissa?
+\end{enumerate}
+
+%Nanon käyttö?
+
+%Merkistöesimerkki mallitiedostolla jossa on väärät rivinvaihdot?
+
+\section{Ohjelmistojen asentaminen}
+
+Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri.
+\begin{itemize}
+\item Tarkista, mitä riippuvuuksia paketti ''htop'' tarvitsee. Listaa näistä muutama.
+\item Asenna kyseinen paketti.
+\item Käynnistä nettiselain.
+\item Käynnistä htop, tapa äsken käynnistämäsi nettiselain.
+\end{itemize}
+
+\section{Palvelun asentaminen}
+
+\begin{enumerate}
+\item Asenna apache2 (''apt-get install apache2'')
+\item Testaa toimiiko (\url{http://localhost/})
+\item Apachen käynnistäminen/sammuttaminen:
+	\begin{itemize}
+	\item apache2ctl (configtest / graceful)
+	\item service apache2 start/stop
+	\end{itemize}
+\item Vaihda oletusportti 80=\textgreater 8080.  Aja muutos sisään ja testaa se webbiselaimella.
+\item Kytke käyttöön käyttäjäkohtaiset hakemistot (\textasciitilde username/ = public\_html)
+	\begin{itemize}
+	\item Luo kotihakemistoosi hakemisto nimeltä ''public\_html''
+	\item Kytke Apachen userdir-moduli päälle (a2enmod userdir)
+	\item Testaa toimiiko (\url{http://localhost/~username/} )
+	\item Kopioi ''/var/www/html/index.html'' ''public\_html'' hakemistoosi.
+	\item Editoi itsellesi html-muotoinen ''index.html'' tiedosto
+	\end{itemize}
+%\item Tarkastele miten hakemisto-indeksit, käyttöoikeudet ja niiden
+%asetusten periytyminen (.htaccess) toimii.
+
+Huom: tällainen jako on saatavilla Aallon palvelimella
+\url{http://users.aalto.fi/username/}
+
+
+\item PHP-esimerkki
+	\begin{itemize}
+	\item Asenna php5 paketti.
+	\item Kytke php5 moduli päälle.
+	\item Tee hello.php tiedosto ja cutpastea sinne sisältö sivulta:
+\url{http://php.net/manual/en/tutorial.firstpage.php}
+	\item Testaa php-skriptin toiminta webbiselaimella.
+	\end{itemize}
+\end{enumerate}
+
+Jos et halua jättää apachea ajoon, poista apache2 paketti.
+
+\section{Järjestelmälogit}
+
+\begin{enumerate}
+\item Järjestelmän logit löytyvät hakemistopuusta: /var/log
+\item Apachen logit /var/log/apache2/
+\item Etsi/greppaa logeista:
+	\begin{itemize}
+	\item Sisäänloggautumiset
+	\item Rootin loggautumiset
+	\item Virheet
+	\end{itemize}
+\item Etsii aikaleiman mukaan jotain
+\end{enumerate}
+
+\section{Verkkoasetukset}
+
+\begin{enumerate}
+\item Taustoja IP-verkoista
+	\begin{itemize}
+	\item IP-osoitteet, subnetit ja laitareititys (gateway)
+	\item arp / neighbor discovery
+	\item Sisäiset osoitteet (10./8, 192.168./16, 172.162/12, 169.254./16)
+	\end{itemize}
+\item NetworkManageriin tutustuminen
+	\begin{itemize}
+	\item Tarkista IP-osoitteesi, mikä se on tällä hetkellä?
+	\item Muuta IP-osoitteesi vapaavalintaiseksi uudeksi osoitteeksi. (Luonnollisesti siten, että sama verkkomaski pätee, eikä verkko muutu)
+	\end{itemize}
+\item Manuaalinen konfigurointi (networkmanagerin tappaminen)
+	\begin{itemize}
+	\item Debianissa verkkoasetukset: /etc/network
+	\item Komentorivityökalu ip (legacy: ifconfig, arp, route)
+	\item iwconfig (paketissa ''wireless-tools'')
+	\item Tutustu asetuksiisi ''ip''-komennolla, ja myös iwconfig jos
+	käytössä on wlan-yhteys.
+	\item IP-aliakset, lisää itsellesi osoite 192.168.10.10.
+	\end{itemize}
+%\item Verkkoyhteyden jakaminen?
+\end{enumerate}
+
+
+\end{document}
