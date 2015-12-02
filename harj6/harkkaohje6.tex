@@ -91,7 +91,7 @@ tai \emph{echo \$\{ESIM\}}
 \item Muuttuja voi määritellä komentokohtaisesti myös: \emph{VALIAIK=''heipa
 hei'' echo \$VALIAIK}
 \item Tee kotihakemistoosi hakemisto \emph{bin} ja lisää tämä
-komentopolulle: \emph{export PATH=\$\{PATH\}:~/bin}
+komentopolulle: \emph{export PATH=\$\{PATH\}:\textasciitilde/bin}
 \end{enumerate}
 
 \section{Komentotiedostot}
@@ -196,7 +196,7 @@ fi
 if [ -r "$1" ] ; then
     echo First parameter is $1 : `wc -l "$1"` lines
 else
-    echo There's no such file as $1
+    echo There\'s no such file as $1
 fi
 \end{verbatim}
 
