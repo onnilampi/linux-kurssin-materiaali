@@ -1,0 +1,205 @@
+\documentclass[12pt,portrait,a4]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+
+\pdfinfo{
+  /Title (harkkaohje6.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Risto Järvinen)
+  /Subject (Harkkaohje6)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+%\setlist{nosep}
+\setlist{topsep=5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedbottom
+
+\begin{multicols}{2}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+Nimi:\hrulefill
+
+Op.num:\hrulefill
+
+\end{multicols}
+
+\section{Ympäristömuuttujat}
+
+Ympäristömuuttujat ovat komentotulkin (shell) levittämiä muuttujia, joilla
+välitetään käyttäjän asetuksia.  Tässä harjoitellaan bash-tulkin syntaksia.
+
+\begin{enumerate}
+\item Tulosta ympäristömuuttujasi: \emph{printenv}
+\item Tarkastele komentopolkuasi, joka löytyy muuttujasta \emph{PATH}:
+\emph{printenv PATH} \\
+Komentopolku on lista hakemistoja, joista komentoriviltä ajettavia komentoja
+haetaan.
+\item Tehdään esimerkiksi uusi muuttuja: \emph{export ESIM=helloworld}
+\item Ympäristömuuttujia voidaan käyttää komentorivillä: \emph{echo \$ESIM}
+tai \emph{echo \$\{ESIM\}}
+\item Muuttuja voi määritellä komentokohtaisesti myös: \emph{VALIAIK=''heipa
+hei'' echo \$VALIAIK}
+\item Tee kotihakemistoosi hakemisto \emph{bin} ja lisää tämä
+komentopolulle: \emph{export PATH=\$\{PATH\}:~/bin}
+\end{enumerate}
+
+\section{Komentotiedostot}
+
+Komentotiedosto (shell script, batch file) on suoritettava tiedosto, jossa
+on komentoja jotka komentotulkki suorittaa peräkkäin.  Komentotiedostot
+tunnistetaan laittamalla tiedoston alkuun ns. hashbang-tunniste 
+(\emph{\#!/bin/sh}), joka kertoo millä tulkilla komentotiedosto tulee
+suorittaa.  Lisäksi komentotiedosto tulee laittaa suoritettavaksi
+(\emph{chmod +x tiedosto}).  Jotkut nimeää komentotiedostot \emph{.sh}
+päätteellä, mutta tämä ei ole pakollista.
+
+Komentotiedostot ovat oma rajoittunut ohjelmointikielensä,
+mutta niiden käyttökelpoisuus tehtävien automatisoinnissa on
+kiistämätön.  Käsitellään niiden rakennetta tässä lyhyesti parilla
+esimerkillä.
+
+\begin{enumerate}
+\item Luo bin-hakemistoosi tiedosto nimeltä \emph{mun\_ohjelmat.sh} ja syötä
+sinne komennot:
+\begin{verbatim}
+#!/bin/sh
+# Risuaidalla voidaan tehdä kommentteja komentotiedostoihin
+# Tallennetaan muuttujaan toisen komennon ulostulo:
+MINAITSE=`whoami`
+# Toinen tapa tehdä sama asia:
+# MINAITSE=$(whoami)
+# Tulostetaan lista omista prosesseistani ja lasketaan rivien määrä
+ps --no-headers -u $MINAITSE | wc -l
+\end{verbatim}
+Edellä whoami"-komennon kanssa käytetty merkki on ns. backtick, löytyy plus"- ja
+backspace"-nappien välistä näppäilyllä: \emph{shift-` välilyönti}.  Näiden
+kanssa tarkkana.
+\item Lisää tiedostolle suoritusoikeus: \emph{chmod +x mun\_ohjelmat.sh}
+\item Nyt voit suorittaa komennon \emph{mun\_ohjelmat.sh} ja se tulostaa
+montako prosessia sinulla on ajossa.
+\end{enumerate}
+
+\section{Ohjausrakenteet}
+
+Komentotiedostoissa on (komentotulkista riippuen; bash/tcsh/zsh) myös
+ohjausrakenteita kuten if/then/else-puut ja for-silmukkoja.  Bashin
+manuaalisivu on rasittavan laaja, mutta yksi hyvä täsmäluettava on lista
+ehtolauseista luvussa ''CONDITIONAL EXPRESSIONS''.
+
+\begin{enumerate}
+\item Aloitetaan uuden komentotiedoston kirjoittaminen.  Lisää siihen
+seuraavat komennot:
+\begin{verbatim}
+#!/bin/sh
+# Tarkastetaan ettei komentotiedostoa saa ajaa root-käyttäjänä
+if [ `whoami` = 'root' ]
+then
+    echo 'Do NOT run as root, dummy!'
+    exit 1
+else
+    echo "Welcome, `whoami`."
+    # Vihje: ero lainaus- (") ja heitto- (') merkkien välillä on että lainausmerkkien
+    # välinen osa tulkitaan myös. Kokeile vaihtaa edeltävään komentoon heittomerkit.
+fi
+\end{verbatim}
+\item Testaa ohjelmaa normaalikäyttäjänä ja root"-käyttäjänä (esim.
+sudo"-komennolla).
+\item Yleinen tilanne on että komentoja joudutaan ajamaan useita kertoja ja
+tulokset halutaan eri tiedostoihin.  Tehdään näin esimerkinomaisesti
+for"-silmukalla ja \emph{seq}"-komennolla.  Lisää edelliseen tiedostoon:
+\begin{verbatim}
+for $i in `seq -w 1 10`
+do
+    date > timestamp${i}.txt
+    echo Sleeping $i seconds.
+    sleep $i
+done
+\end{verbatim}
+\item Syntaksi on siis \emph{for MUUTTUJA in ARVOT.. ; do komentoja ; done}.
+Jatketaan tiedostoa:
+\begin{verbatim}
+for $each in timestamp*.txt ; do
+    cat $each
+    rm $each
+done
+echo All done.
+\end{verbatim}
+
+\end{enumerate}
+
+\section{Komentoparametrit}
+
+Komentotiedostoille voi antaa myös parametreja kun niitä kutsutaan
+komentoriviltä.  Näihin viitataan \$NUMERO "-tyyliin.  Nolla on
+suoritettavan komennon nimi, seuraavat siitä ylöspäin annetut parametrit. 
+Esim:
+
+\begin{verbatim}
+#!/bin/sh
+echo This script is `basename $0`
+# Onko 
+if [ "$1" = "" ] ; then
+    echo Master, give me some parameters
+    exit 0
+fi
+if [ -r "$1" ] ; then
+    echo First parameter is $1 : `wc -l "$1"` lines
+else
+    echo There's no such file as $1
+fi
+\end{verbatim}
+
+
+
+\end{document}
