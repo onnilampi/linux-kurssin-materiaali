@@ -92,7 +92,7 @@ Näetkö eroa tekstieditorissa?
 
 \section{Ohjelmistojen asentaminen}
 
-Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri.
+Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri. Mikäli teet harkkoja järjestelmällä, josta aptitudea ei löydy (esim. Arch tai Gentoo), käytä vastaavaa pakettimanageria.
 \begin{itemize}
 \item Tarkista, mitä riippuvuuksia paketti ''htop'' tarvitsee. Listaa näistä muutama.
 \item Asenna kyseinen paketti.
@@ -115,6 +115,7 @@ Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri.
 	\begin{itemize}
 	\item Luo kotihakemistoosi hakemisto nimeltä ''public\_html''
 	\item Kytke Apachen userdir-moduli päälle (a2enmod userdir)
+	\item Muuta Apachen oletusportti takaisin 8080=\textgreater 80 ja käynnistä Apache uudelleen.
 	\item Testaa toimiiko (\url{http://localhost/~username/} )
 	\item Kopioi ''/var/www/html/index.html'' ''public\_html'' hakemistoosi.
 	\item Editoi itsellesi html-muotoinen ''index.html'' tiedosto
@@ -122,7 +123,7 @@ Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri.
 %\item Tarkastele miten hakemisto-indeksit, käyttöoikeudet ja niiden
 %asetusten periytyminen (.htaccess) toimii.
 
-Huom: tällainen jako on saatavilla Aallon palvelimella
+Huom: tällainen jako on saatavilla Aallon palvelimella.
 \url{http://users.aalto.fi/username/}
 
 
@@ -136,7 +137,7 @@ Huom: tällainen jako on saatavilla Aallon palvelimella
 	\end{itemize}
 \end{enumerate}
 
-Jos et halua jättää apachea ajoon, poista apache2 paketti.
+Jos et halua jättää apachea ajoon, poista apache2-paketti.
 
 \section{Järjestelmälogit}
 
@@ -170,7 +171,7 @@ Jos et halua jättää apachea ajoon, poista apache2 paketti.
 	\begin{itemize}
 	\item Debianissa verkkoasetukset: /etc/network
 	\item Komentorivityökalu ip (legacy: ifconfig, arp, route)
-	\item iwconfig (paketissa ''wireless-tools'')
+	\item iwconfig (paketissa ''wireless-tools''), tämä komento ei toimi virtuaalikoneen kantta. Miksi ei? ;)
 	\item Tutustu asetuksiisi ''ip''-komennolla, ja myös iwconfig jos
 	käytössä on wlan-yhteys.
 	\item IP-aliakset, lisää itsellesi osoite 192.168.10.10.
