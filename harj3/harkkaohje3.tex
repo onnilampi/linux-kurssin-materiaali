@@ -69,7 +69,7 @@
 
 Nimi:\hrulefill
 
-Op.num:\hrulefill
+%Op.num:\hrulefill
 
 \end{multicols}
 
@@ -110,7 +110,7 @@ Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri. M
 	\item apache2ctl (configtest / graceful)
 	\item service apache2 start/stop
 	\end{itemize}
-\item Vaihda oletusportti 80=\textgreater 8080.  Aja muutos sisään ja testaa se webbiselaimella.
+\item Vaihda oletusportti 80=\textgreater 8080.  Aja muutos sisään (lataa configuraatio uudelleen) ja testaa se webbiselaimella.
 \item Kytke käyttöön käyttäjäkohtaiset hakemistot (\textasciitilde username/ = public\_html)
 	\begin{itemize}
 	\item Luo kotihakemistoosi hakemisto nimeltä ''public\_html''
@@ -123,7 +123,7 @@ Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri. M
 %\item Tarkastele miten hakemisto-indeksit, käyttöoikeudet ja niiden
 %asetusten periytyminen (.htaccess) toimii.
 
-Huom: tällainen jako on saatavilla Aallon palvelimella.
+Huom: tällainen jako on saatavilla Aallon palvelimella. Kätevää, jos haluaa vaikka jakaa jotain koulun koneilla tehtyä julkisella linkillä eteen päin ilman bloatteja dropbox-kikkareita.
 \url{http://users.aalto.fi/username/}
 
 
@@ -150,7 +150,7 @@ Jos et halua jättää apachea ajoon, poista apache2-paketti.
 	\item Rootin loggautumiset
 	\item Virheet
 	\end{itemize}
-\item Etsii aikaleiman mukaan jotain
+\item Etsi aikaleiman mukaan jotain
 \end{enumerate}
 
 \section{Verkkoasetukset}
@@ -165,7 +165,7 @@ Jos et halua jättää apachea ajoon, poista apache2-paketti.
 \item NetworkManageriin tutustuminen
 	\begin{itemize}
 	\item Tarkista IP-osoitteesi, mikä se on tällä hetkellä?
-	\item Muuta IP-osoitteesi vapaavalintaiseksi uudeksi osoitteeksi. (Luonnollisesti siten, että sama verkkomaski pätee, eikä verkko muutu)
+	\item Muuta IP-osoitteesi vapaavalintaiseksi uudeksi väliaikaiseksi osoitteeksi. (Luonnollisesti siten, että sama verkkomaski pätee, eikä verkko muutu.)
 	\end{itemize}
 \item Manuaalinen konfigurointi (networkmanagerin tappaminen)
 	\begin{itemize}
