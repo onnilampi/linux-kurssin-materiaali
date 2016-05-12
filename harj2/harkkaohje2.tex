@@ -191,18 +191,13 @@ hakemistoosi.  Mitä ''XPM'' tarkoittaa? \hrulefill
 	\end{itemize}
 
 \item Siirry takaisin kotihakemistoosi.  Luo uusi hakemisto ja kopioi kaikki
-tiedostot ''\textbf{/etc}'' hakemistosta luomaasi hakemistoon.  Kopioi myös
-alihakemistot!  (Vihje: ''recursive'')
-	\begin{itemize}
-	\item Siirry uuteen hakemistoosi.  Tee uusi alihakemisto ja laita
-sinne tiedostot, jotka alkavat isolla alkukirjaimella.  Tee toinen
-alihakemisto ja laita sinne tiedostot, jotka alkavat pienellä kirjaimella. 
-Mikä on pienin lukumäärä komentoja joilla tämän pystyt tekemään?  \hrulefill
-	\item Poista ylijääneet tiedostot.
-	\item Siirry kotihakemistoosi.  Poista kopioimasi tiedostot
-sisältävä alihakemisto ja kaikki sen sisältämät tiedostot yhdellä
-komennolla.  Tämä komento on: \hrulefill
-	\end{itemize}
+	tiedostot ''\textbf{/etc}'' hakemistosta luomaasi hakemistoon.  Kopioi myös
+	alihakemistot!  (Vihje: ''recursive'')
+	        \begin{itemize}
+			\item Siirry uuteen hakemistoosi.  Laske käyttäen ''find''- ja ''wc''-komentoja kuinka monta tiedostoa (ei kansioita) alkaa isolla alkukirjaimella. (Vihje: -type ja -name optiot)  Vastaus: \hrulefill
+		        \item Liitä kaikki nämä tiedosto peräkanaa yhteen tiedostoon. Kuinka monta riviä tässä tiedostossa olisi?  (Vihje: find -print0 \textbar xargs -0 cat \textgreater\textgreater tiedosto)  Vastaus: \hrulefill
+		        \item Siirry kotihakemistoosi.  Poista kopioimasi tiedostot sisältävä alihakemisto ja kaikki sen sisältämät tiedostot yhdellä komennolla.  Tämä komento on: \hrulefill
+	        \end{itemize}
 
 \item Tee kotihakemistoosi symbolinen linkki hakemistoon ''\textbf{/tmp}''.  Tarkasta
 että se toimii.
