@@ -104,17 +104,17 @@ Debianissa ja muissa yleisissä jakeluissa on käytössä apt-pakettimanageri. M
 
 \begin{enumerate}
 \item Asenna apache2 (''apt-get install apache2'')
-\item Testaa toimiiko (\url{http://localhost/})
-\item Apachen käynnistäminen/sammuttaminen:
+\item Testaa toimiiko se (\url{http://localhost/})
+\item Apachen käynnistäminen/sammuttaminen (vaativat sudon):
 	\begin{itemize}
 	\item apache2ctl (configtest / graceful)
 	\item service apache2 start/stop
 	\end{itemize}
-\item Vaihda oletusportti 80=\textgreater 8080.  Aja muutos sisään (lataa configuraatio uudelleen) ja testaa se webbiselaimella.
+\item Vaihda oletusportti 80=\textgreater 8080 (/etc/apache2/ports.conf).  Aja muutos sisään (lataa configuraatio uudelleen) ja testaa webbiselaimella \url{http://localhost:8080/}.
 \item Kytke käyttöön käyttäjäkohtaiset hakemistot (\textasciitilde username/ = public\_html)
 	\begin{itemize}
 	\item Luo kotihakemistoosi hakemisto nimeltä ''public\_html''
-	\item Kytke Apachen userdir-moduli päälle (a2enmod userdir)
+	\item Kytke Apachen userdir-moduli päälle (sudo a2enmod userdir)
 	\item Muuta Apachen oletusportti takaisin 8080=\textgreater 80 ja käynnistä Apache uudelleen.
 	\item Testaa toimiiko (\url{http://localhost/~username/} )
 	\item Kopioi ''/var/www/html/index.html'' ''public\_html'' hakemistoosi.
@@ -130,14 +130,14 @@ Huom: tällainen jako on saatavilla Aallon palvelimella. Kätevää, jos haluaa 
 \item PHP-esimerkki
 	\begin{itemize}
 	\item Asenna php5 paketti.
-	\item Kytke php5 moduli päälle.
+	\item Kytke Apachen php5 moduuli päälle.
 	\item Tee hello.php tiedosto ja cutpastea sinne sisältö sivulta:
 \url{http://php.net/manual/en/tutorial.firstpage.php}
 	\item Testaa php-skriptin toiminta webbiselaimella.
 	\end{itemize}
 \end{enumerate}
 
-Jos et halua jättää apachea ajoon, poista apache2-paketti.
+Jos et halua jättää Apachea ajoon, poista apache2-paketti.
 
 \section{Järjestelmälogit}
 

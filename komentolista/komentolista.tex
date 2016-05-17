@@ -257,7 +257,7 @@ reititetään reititystaulun mukaan.
 
 \begin{description}[leftmargin=1.5cm,style=nextline]
 \item[tar] koostaa/purkaa tiedostot ja niiden oikeudet yhteen tiedostoon
-\item[gzip] pakkaa/purkaa gz-tiedoston
+\item[gzip] pakkaa tiedoston gz-muotoon
 \item[gunzip] purkaa gz-tiedoston
 \item[zip] koostaa ja pakkaa tiedostot zip-tiedostoon
 \item[unzip] purkaa zip-tiedoston
@@ -279,6 +279,19 @@ reititetään reititystaulun mukaan.
 ref \url{http://aperiodic.net/screen/quick_reference}
 
 \section{SSH pikaopas}
+\begin{description}[leftmargin=1.5cm,style=nextline]
+\item[ssh host] aloittaa pääteyhteyden koneelle host
+\item[ssh user@host] pääteyhteys käyttäjätunnuksella user
+\item[ssh host komento] suorita komento koneella host
+\item[ssh -i idfile host] pääteyhteys annetulla julkisella avaimella
+\item[ssh-keygen] luo julkisen autetikointiavaimen
+\item[ssh-copy-id -i idfile host] kopioi juokisen avaimen koneelle host
+\item[sftp host] aloittaa tiedonsiirtoyhteyden
+\item[scp tiedosto host] siirtää tiedoston koneelle host
+\item[scp host:tiedosto] siirtää tiedoston koneelta host
+\item[-L {[bindaddr:]}port:host:hostport] tekee tunnelin paikallisesta (osoitteella bindaddr) portista port kohteelle host:hostport
+\item[-L {[bindaddr:]}port:host:hostport] tekee tunnelin etäkoneelta (osoitteella bindaddr) portista port paikalliselle kohteelle host:hostport
+\end{description}
 
 \section{Git pikaopas}
 
