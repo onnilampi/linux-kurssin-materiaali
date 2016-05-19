@@ -69,7 +69,7 @@
 
 Nimi:\hrulefill
 
-Op.num:\hrulefill
+%Op.num:\hrulefill
 
 \end{multicols}
 
@@ -156,9 +156,9 @@ ulkopuolelta Aallon wwwproxy.hut.fi palvelua Koshin kautta.
 
 \begin{enumerate}
 \item Tällöin tunneli muodostettaisiin seuraavasti:
-\emph{ssh username@kosh.aalto.fi -L localhost:8080:wwwproxy.hut.fi:80}
+ \\ \emph{ssh username@kosh.aalto.fi -L localhost:8080:wwwproxy.hut.fi:80}
 \item Aseta tämän jälkeen webbiselaimesi proxy-asetukseksi: \emph{localhost:8080}
-(firefox: preferences/advanced/network/settings)
+ \\ (firefox: preferences/advanced/network/settings)
 \item Vahvista toiminta vaikkapa \url{http://whatismyipaddress.com}
 \end{enumerate}
 
@@ -176,7 +176,7 @@ vahvistaa käyttäjän identiteetin.
 avaimen ''testi.pub''.  Julkinen avain voidaan vapaasti kopioida palvelimelle
 (sen tietäminen ei auta mahdollisia hakkereita varastamaan tunnuksiasi).
 \item Tämän voi tehdä joko manuaalisesti kopioimalla ''testi.pub'' palvelimella
-kotihakemistoosi ''.ssh/authorized\_hosts'' tiedostoon.  Tai automaattisesti
+kotihakemistoosi \\ ''.ssh/authorized\_hosts'' tiedostoon.  Tai automaattisesti
 komennolla: \emph{ssh-copy-id -i testi username@palvelin}
 \item Nyt voit kirjautua ilman salasanaa: \emph{ssh -i testi username@palvelin}
 \end{enumerate}
