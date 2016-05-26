@@ -70,7 +70,6 @@
 
 Nimi:\hrulefill
 
-Op.num:\hrulefill
 
 \end{multicols}
 
@@ -159,7 +158,7 @@ sudo"-komennolla).
 tulokset halutaan eri tiedostoihin.  Tehdään näin esimerkinomaisesti
 for"-silmukalla ja \emph{seq}"-komennolla.  Lisää edelliseen tiedostoon:
 \begin{verbatim}
-for $i in `seq -w 1 10`
+for i in `seq -w 1 10`
 do
     date > timestamp${i}.txt
     echo Sleeping $i seconds.
@@ -169,7 +168,7 @@ done
 \item Syntaksi on siis \emph{for MUUTTUJA in ARVOT.. ; do komentoja ; done}.
 Jatketaan tiedostoa:
 \begin{verbatim}
-for $each in timestamp*.txt ; do
+for each in timestamp*.txt ; do
     cat $each
     rm $each
 done

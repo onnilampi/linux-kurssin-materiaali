@@ -295,6 +295,30 @@ ref \url{http://aperiodic.net/screen/quick_reference}
 \end{description}
 
 \section{Git pikaopas}
+\begin{description}[leftmargin=1.8cm,style=nextline]
+\item[git init] luo git-repositorion
+\item[git clone url] kopioi git-repositorion osoitteesta \textit{url}
+ \medskip
+\item[git status] kertoo repositorion tilan
+\item[git diff] näyttää repositoriossa tapahtuneet muutokset
+\item[git add tiedosto] lisää tiedoston tulevaan kommittiin
+\item[git commit -m ''lyhyt kuvaus''] tallentaa (kommitoi) muutoksen repositorioon
+ \medskip
+\item[git pull] lataa ja yhdistää lähderepositorioon tehdyt muutokset
+\item[git pull --rebase] lataa lähderepositorion muutokset ja perustaa paikalliset muutokset sille
+\item[git push] lähettää paikalliset tallennetut muutokset lähderepositorioon
+ \medskip
+\item[git branch] listaa paikallisen repositorion haarat
+\item[git branch nimi] luo paikallisen haaran \textit{nimi}
+\item[git checkout nimi] vaihtaa haaraan \textit{nimi} ja päivittää hakemiston sisällön
+\item[git merge nimi] yhdistää haaran \textit{nimi} valittuun haaraan
+\item[git branch -d nimi] poistaa haaran nimeltä \textit{nimi}
+ \medskip
+\item[git reset leima] poistaa \textit{leima} version jälkeen tehdyt muutokset, mutta säilyttää muokatut tiedostot
+\item[git reset --hard leima] poistaa \textit{leima} version jälkeiset muutokset ja palauttaa hakemiston tilan taannoiseksi
+ \medskip
+\item[git blame tiedosto] tulostaa pyydetyn tiedoston merkiten kuka on viimeksi muokannut kutakin riviä
+\end{description}
 
 
 
