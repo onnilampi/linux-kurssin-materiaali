@@ -1,0 +1,135 @@
+\documentclass[finnish]{beamer}
+\usepackage[utf8]{inputenc}
+
+\mode<presentation> {
+
+    \usetheme{Madrid}
+    %\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+    %\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+    \setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+%\beamertemplatenavigationsymbolsempty
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{lmodern}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Linuxin perusteet]{Tervetuloa!} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{CEC ry} % Your name
+\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+    \medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+    \titlepage% Print the title page as the first slide
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Walpuri?} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Kurssi lyhyesti} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+
+\begin{frame}
+    \subsection{Kurssista ja harkoista}
+    \frametitle{Kurssista ja harkoista}
+    \begin{itemize}
+        \item Valmennusta näyttökokeeseen
+            \begin{itemize}
+                \item Joulukuussa, ilmoitetaan myöhemmin
+            \end{itemize}
+
+        \item Vapaamuotoisia
+        \item Pakollisia samalla tavalla kuin mikä tahansa harjoittelu on pakollista
+            \begin{itemize}
+                \item Voi jättää väliin, mutta asiat testataan silti
+            \end{itemize}
+    \end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \subsection{Kurssin sisältö}
+    \frametitle{Kurssin sisältö}
+    \begin{itemize}
+        \item Tekstieditorin käyttö (esim. Nano, Vim)
+        \item Linuxin hakemistorakenteen tunteminen
+        \item Ohjelmien asennus ja poistaminen paketinhallinnan (Debian apt) avulla, riippuvuuksien selvittäminen
+        \item Palveluiden käynnistäminen ja sammuttaminen
+        \item Järjestelmälogit
+        \item Verkkoasetusten säätäminen sekä perusverkkodiagnostiikoiden käyttö
+        \item SSH
+        \item Screen ja IRCin (irssi) peruskäyttö
+        \item Ohjelmointityökalujen käyttö, git
+        \item Komentotulkin ympäristömuuttujat
+        \item Skriptit
+
+
+
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Harkkakerrat}
+    \subsection{Harkkakerrat}
+    \frametitle{Harkkakerrat}
+    \begin{block}{10.11}
+        Komentorivi, man-sivut, järjestelmä
+    \end{block}
+    \pause
+    \begin{block}{17.11}
+        Tekstieditorit, ohjelmien asennus, palvelut, logit, verkkoasetukset
+    \end{block}
+    \pause
+    \begin{block}{22.11}
+        SSH, screen, tunnelointi, avaimet, verkkodiagnostiikka
+    \end{block}
+    \pause
+    \begin{block}{29.11}
+        Ohjelmointityökalut, C, make, git\ldots
+    \end{block}
+    \pause
+    \begin{block}{1.12}
+        Ympäristömuuttujat, skriptit, ohjausrakenteet, parametrit\ldots
+    \end{block}
+
+\end{frame}
+
+
+\section{Muuta}
+
+\begin{frame}
+    \subsection{Muuta}
+    \frametitle{Muuta}
+    \begin{itemize}
+        \item \#linuxkurssi@IRCnet
+        \item TG-ryhmä?
+        \item Jatkuva palaute google formissa.
+        \item Kaato tammikuussa
+    \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

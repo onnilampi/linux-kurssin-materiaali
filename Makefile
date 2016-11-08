@@ -6,6 +6,7 @@ all:
 	make -C harj5
 	make -C harj6
 	make -C komentolista
+	make -C presentations
 
 clean:
 	make -C harj2 clean
@@ -14,4 +15,5 @@ clean:
 	make -C harj5 clean
 	make -C harj6 clean
 	make -C komentolista clean
+	make -C presentations clean
 		
