@@ -16,4 +16,3 @@ clean:
 	make -C harj6 clean
 	make -C komentolista clean
 	make -C presentations clean
-		

@@ -1,7 +1,7 @@
 
 harkkaohje6.pdf: harkkaohje6.tex
-	pdflatex harkkaohje6.tex
-	pdflatex harkkaohje6.tex
+	latexmk -pdf harkkaohje6.tex
 
 clean:
-	rm -rf *~ *.log *.out *.aux
+	latexmk -c
+	rm -f *~
