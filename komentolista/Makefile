@@ -1,9 +1,9 @@
 
-all:	komentolista.pdf
+all: komentolista.pdf
 
 komentolista.pdf: komentolista.tex
-	pdflatex komentolista.tex
-	pdflatex komentolista.tex
+	latexmk -pdf komentolista.tex
 
 clean:
-	rm -rf *~ *.log *.out *.aux
+	latexmk -c
+	rm -f *~
